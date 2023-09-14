@@ -1,12 +1,12 @@
 <script lang="ts">
   import { invoke } from "@tauri-apps/api/tauri"
 
-  let dots = [];
+  export let dots: { x: number; y: number }[] = [];
 
   async function generateValues(){
     // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-    dots = await invoke("get_dots") as { x: number; y: number }[];
-    console.log(dots);
+    const rawDots = await invoke("get_dots") as number[][];
+    dots = rawDots.map(([x, y]) => ({ x, y }));
   }
 </script>
 

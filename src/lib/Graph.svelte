@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 
 import { Scatter } from 'svelte-chartjs'; 
 
@@ -23,39 +23,17 @@ ChartJS.register(
     PointElement
 );
 
-export const data = {
+export let dots: { x: number; y: number }[] = [];
+
+$: formattedDots = dots.map(dot => ({ x: dot.x, y: dot.y }));
+$: data = {
     datasets: [{
-    label: 'L1',
-    data: [{
-      x: -10,
-      y: 0
-    }, {
-      x: 0,
-      y: 10
-    }, {
-      x: 10,
-      y: 5
-    }, {
-      x: 0.5,
-      y: 5.5
-    },
-    {
-      x: 5,
-      y: 0
-    }, {
-      x: 3,
-      y: -5
-    }, {
-      x: 1,
-      y: 9
-    }, {
-      x: 10,
-      y: 3
+        label: 'Generated Dots',
+        data: formattedDots,
+        backgroundColor: 'rgb(255, 99, 132)'
     }],
-    backgroundColor: 'rgb(255, 99, 132)'
-  }],
-}
+};
+
 </script>
 
-
-<Scatter { data} options={{ responsive:  true }} />
+<Scatter { data } options={{ responsive:  true }} />

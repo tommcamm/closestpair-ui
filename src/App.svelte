@@ -1,7 +1,8 @@
 <script lang="ts">
   import ButtonsPanel from './lib/ButtonsPanel.svelte';
 import Graph from './lib/Graph.svelte';
-import Greet from './lib/Greet.svelte'
+
+let dots: { x: number; y: number }[] = [];
 </script>
 
 <main class="container">
@@ -9,7 +10,7 @@ import Greet from './lib/Greet.svelte'
     Closest Pair UI concept
   </p>
 
-  <Graph />
-  <ButtonsPanel />
+  <Graph bind:dots={dots}/>
+  <ButtonsPanel bind:dots={dots} />
 
 </main>
