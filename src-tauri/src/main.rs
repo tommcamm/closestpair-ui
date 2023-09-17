@@ -21,9 +21,9 @@ fn main() {
 
 // Function to generate 100 dots and save them in the global variable
 #[tauri::command]
-async fn get_dots() -> Result<Vec<(f64, f64)>, String> {
+async fn get_dots(n :i32) -> Result<Vec<(f64, f64)>, String> {
     let mut rng = rand::thread_rng();
-    let new_dots: Vec<_> = (0..100).map(|_| {
+    let new_dots: Vec<_> = (0..n).map(|_| {
         (rng.gen::<f64>() * 100.0, rng.gen::<f64>() * 100.0)
     }).collect();
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import ButtonsPanel from './lib/ButtonsPanel.svelte';
+import ButtonsPanel from './lib/ButtonsPanel.svelte';
 import Graph from './lib/Graph.svelte';
 import { onMount } from 'svelte';
   import { window } from '@tauri-apps/api';
@@ -7,14 +7,20 @@ import { onMount } from 'svelte';
 let dots: { x: number; y: number }[] = [];
 let closestPair: { x: number; y: number }[] = [];
 let distance: number = 0;
+let isDarkMode = false;
 
 // Fix the white screen problem, show the window only after is fully loaded
 onMount(async () => {
     // This code runs after the component is added to the DOM.
     await window.getCurrent().show();
-});
 
+    window.getCurrent().theme().then((theme) => {
+      console.log(theme);
+        isDarkMode = theme as string === 'dark';
+    });
+});
 </script>
+
 <main class="container">
   <div style="margin-top: -55px;">
     <h1>Closest Pair UI</h1>
@@ -26,6 +32,6 @@ onMount(async () => {
 
 
   <Graph bind:dots={dots} bind:closestPair={closestPair}/>
-  <ButtonsPanel bind:dots={dots} bind:closestPair={closestPair} bind:distance={distance}/>
+  <ButtonsPanel bind:dots={dots} bind:closestPair={closestPair} bind:distance={distance} bind:isDarkMode={isDarkMode}/>
 
 </main>
