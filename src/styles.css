@@ -14,6 +14,15 @@
   -webkit-text-size-adjust: 100%;
 }
 
+body {
+  overflow: hidden;
+}
+
+.fa-icon {
+  width: 2em;
+  height: 2em;
+}
+
 .container {
   margin: 0;
   padding-top: 10vh;

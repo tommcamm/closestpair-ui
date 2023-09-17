@@ -13,9 +13,20 @@
   "tauri": {
     "allowlist": {
       "all": false,
+      "dialog": {
+        "all": true,
+        "ask": true, 
+        "confirm": true, 
+        "message": true, 
+        "open": true, 
+        "save": true
+      },
       "shell": {
         "all": false,
         "open": true
+      },
+      "window": {
+        "show": true
       }
     },
     "bundle": {
@@ -35,10 +46,11 @@
     "windows": [
       {
         "fullscreen": false,
-        "resizable": true,
+        "resizable": false,
         "title": "closest pair UI",
         "width": 800,
-        "height": 600
+        "height": 600,
+        "visible": false
       }
     ]
   }
