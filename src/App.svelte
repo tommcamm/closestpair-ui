@@ -3,6 +3,7 @@
 import Graph from './lib/Graph.svelte';
 
 let dots: { x: number; y: number }[] = [];
+let closestPair: { x: number; y: number }[] = [];
 </script>
 
 <main class="container">
@@ -10,7 +11,7 @@ let dots: { x: number; y: number }[] = [];
     Closest Pair UI concept
   </p>
 
-  <Graph bind:dots={dots}/>
-  <ButtonsPanel bind:dots={dots} />
+  <Graph bind:dots={dots} bind:closestPair={closestPair}/>
+  <ButtonsPanel bind:dots={dots} bind:closestPair={closestPair}/>
 
 </main>

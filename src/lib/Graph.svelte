@@ -24,16 +24,24 @@ ChartJS.register(
 );
 
 export let dots: { x: number; y: number }[] = [];
+export let closestPair: { x: number; y: number }[] = [];
 
 $: formattedDots = dots.map(dot => ({ x: dot.x, y: dot.y }));
 $: data = {
-    datasets: [{
+    datasets: [
+        {
+        label: 'Closest Pair',
+        data: closestPair,
+        backgroundColor: 'rgb(255, 99, 132)' // red
+        },
+        {
         label: 'Generated Dots',
         data: formattedDots,
-        backgroundColor: 'rgb(255, 99, 132)'
-    }],
+        backgroundColor: 'rgb(75, 192, 192)' // green
+        },
+],
 };
 
 </script>
 
-<Scatter { data } options={{ responsive:  true }} />
+<Scatter { data } options={{ responsive: true }} />

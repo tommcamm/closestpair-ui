@@ -303,12 +303,18 @@ dependencies = [
 name = "closest-pair-ui"
 version = "0.0.0"
 dependencies = [
+ "closest_pair",
+ "lazy_static",
  "rand 0.8.5",
  "serde",
  "serde_json",
  "tauri",
  "tauri-build",
 ]
+
+[[package]]
+name = "closest_pair"
+version = "0.1.0"
 
 [[package]]
 name = "cocoa"
